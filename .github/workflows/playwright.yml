@@ -34,6 +34,9 @@ jobs:
       - name: Install Allure CLI
         run: npm install -g allure-commandline
 
+      - name: Clean Allure Results
+        run: rm -rf allure-results
+
       - name: Run Tests
         run: |
           if [ -z "${{ github.event.inputs.test_name }}" ]; then
@@ -56,10 +59,3 @@ jobs:
           name: allure-report
           path: allure-report/
           if-no-files-found: ignore
-
-      - name: Deploy Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          publish_branch: gh-pages
