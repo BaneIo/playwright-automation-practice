@@ -12,6 +12,9 @@ on:
         required: false
         default: ""
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -35,7 +38,7 @@ jobs:
         run: npm install -g allure-commandline
 
       - name: Clean Allure Results
-        run: rm -rf allure-results
+        run: rm -rf allure-results allure-report
 
       - name: Run Tests
         run: |
@@ -45,17 +48,12 @@ jobs:
             npx playwright test ${{ github.event.inputs.test_target }} -g "${{ github.event.inputs.test_name }}"
           fi
 
-      - name: Debug Allure results
-        run: ls -R allure-results || echo "No allure-results folder"
-
       - name: Generate Allure Report
         run: |
-          mkdir -p allure-report
           npx allure generate allure-results --clean -o allure-report
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: allure-report
-          path: allure-report/
-          if-no-files-found: ignore
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
