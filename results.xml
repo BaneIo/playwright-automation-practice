@@ -1,0 +1,48 @@
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="2.8431299999999995">
+<testsuite name="APITests1.spec.js" timestamp="2025-12-27T01:12:04.466Z" hostname="chromium" tests="4" failures="0" skipped="0" time="0.721" errors="0">
+<testcase name="GET - Get product" classname="APITests1.spec.js" time="0.372">
+<system-out>
+<![CDATA[GET product: {
+  id: [33m1[39m,
+  title: [32m'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops'[39m,
+  price: [33m109.95[39m,
+  description: [32m'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday'[39m,
+  category: [32m"men's clothing"[39m,
+  image: [32m'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png'[39m,
+  rating: { rate: [33m3.9[39m, count: [33m120[39m }
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="POST - Create product" classname="APITests1.spec.js" time="0.096">
+<system-out>
+<![CDATA[POST response: {
+  id: [33m21[39m,
+  title: [32m'Test product'[39m,
+  price: [33m13.5[39m,
+  description: [32m'Playwright API test product'[39m,
+  category: [32m'tech'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="PUT - Update product" classname="APITests1.spec.js" time="0.139">
+<system-out>
+<![CDATA[PUT response: {
+  id: [33m21[39m,
+  title: [32m'Updated product title'[39m,
+  price: [33m99.99[39m,
+  description: [32m'Updated description from Playwright'[39m,
+  category: [32m'tech'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="DELETE - Delete product" classname="APITests1.spec.js" time="0.114">
+<system-out>
+<![CDATA[Deleted product ID: 21
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

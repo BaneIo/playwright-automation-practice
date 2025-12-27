@@ -1,0 +1,60 @@
+name: Playwright Tests Flexible with Single Test Option
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_target:
+        description: 'The test file to run (use "." for all tests)'
+        required: true
+        default: "."
+      test_name:
+        description: "Optional: Name of a specific test to run within the file"
+        required: false
+        default: ""
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline
+
+      - name: Run Playwright Test(s)
+        run: |
+          if [ -z "${{ github.event.inputs.test_name }}" ]; then
+            npx playwright test ${{ github.event.inputs.test_target }}
+          else
+            npx playwright test ${{ github.event.inputs.test_target }} -g "${{ github.event.inputs.test_name }}"
+          fi
+
+      - name: Generate Allure Report
+        run: allure generate allure-results --clean -o allure-report
+
+      - name: Upload Allure Report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report/
+          if-no-files-found: ignore
+
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages

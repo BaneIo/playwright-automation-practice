@@ -1,0 +1,247 @@
+{
+  "config": {
+    "configFile": "C:\\playwrightAutomation\\playwright.config.js",
+    "rootDir": "C:/playwrightAutomation/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        null
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "results.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ],
+      [
+        "C:\\playwrightAutomation\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        {
+          "outputFolder": "my-allure-results"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/playwrightAutomation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/playwrightAutomation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "APITests1.spec.js",
+      "file": "APITests1.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "GET - Get product",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 372,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GET product: {\n  id: \u001b[33m1\u001b[39m,\n  title: \u001b[32m'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops'\u001b[39m,\n  price: \u001b[33m109.95\u001b[39m,\n  description: \u001b[32m'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday'\u001b[39m,\n  category: \u001b[32m\"men's clothing\"\u001b[39m,\n  image: \u001b[32m'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png'\u001b[39m,\n  rating: { rate: \u001b[33m3.9\u001b[39m, count: \u001b[33m120\u001b[39m }\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-27T01:12:06.187Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1aa4aac26317d0ca2a5-71b488a66ea37b21792e",
+          "file": "APITests1.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "POST - Create product",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 96,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "POST response: {\n  id: \u001b[33m21\u001b[39m,\n  title: \u001b[32m'Test product'\u001b[39m,\n  price: \u001b[33m13.5\u001b[39m,\n  description: \u001b[32m'Playwright API test product'\u001b[39m,\n  category: \u001b[32m'tech'\u001b[39m\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-27T01:12:06.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1aa4aac26317d0ca2a5-45b5e808dff2b69dcb2c",
+          "file": "APITests1.spec.js",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "PUT - Update product",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 139,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "PUT response: {\n  id: \u001b[33m21\u001b[39m,\n  title: \u001b[32m'Updated product title'\u001b[39m,\n  price: \u001b[33m99.99\u001b[39m,\n  description: \u001b[32m'Updated description from Playwright'\u001b[39m,\n  category: \u001b[32m'tech'\u001b[39m\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-27T01:12:06.790Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1aa4aac26317d0ca2a5-69f4c7b5ef6c64a5c06f",
+          "file": "APITests1.spec.js",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "DELETE - Delete product",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 114,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Deleted product ID: 21\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-27T01:12:06.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1aa4aac26317d0ca2a5-99cdc87eb7cb88be9655",
+          "file": "APITests1.spec.js",
+          "line": 64,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-12-27T01:12:04.379Z",
+    "duration": 2843.1299999999997,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
