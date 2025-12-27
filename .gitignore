@@ -9,3 +9,7 @@ node_modules/
 /playwright/.cache/
 allure-results/
 allure-report/
+results.json
+results.xml
+tests/screenshots/
+
