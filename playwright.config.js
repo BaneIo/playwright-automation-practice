@@ -12,7 +12,6 @@ import { defineConfig, devices } from "@playwright/test";
  * @see https://playwright.dev/docs/test-configuration
  */
 
-/* ✅ DODATO – čita browser iz GitHub Actions */
 const selectedBrowser = process.env.BROWSER || "chromium";
 
 export default defineConfig({
@@ -34,7 +33,7 @@ export default defineConfig({
   /* Reporter configuration */
   reporter: [
     ["list"],
-    ["github"], // ✅ DODATO – GitHub Actions annotations
+    ["github"],
     // ["html"],
     // ["junit", { outputFile: "results.xml" }],
     // ["json", { outputFile: "results.json" }],
