@@ -11,6 +11,10 @@ import { defineConfig, devices } from "@playwright/test";
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
+/* ✅ DODATO – čita browser iz GitHub Actions */
+const selectedBrowser = process.env.BROWSER || "chromium";
+
 export default defineConfig({
   testDir: "./tests",
 
@@ -30,6 +34,7 @@ export default defineConfig({
   /* Reporter configuration */
   reporter: [
     ["list"],
+    ["github"], // ✅ DODATO – GitHub Actions annotations
     // ["html"],
     // ["junit", { outputFile: "results.xml" }],
     // ["json", { outputFile: "results.json" }],
@@ -51,44 +56,33 @@ export default defineConfig({
   // timeout: 1000,
 
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
-
-    /*
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
-
-    {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
-    },
-    */
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: "Mobile Chrome",
-    //   use: { ...devices["Pixel 5"] },
-    // },
-    // {
-    //   name: "Mobile Safari",
-    //   use: { ...devices["iPhone 12"] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: "Microsoft Edge",
-    //   use: { ...devices["Desktop Edge"], channel: "msedge" },
-    // },
-    // {
-    //   name: "Google Chrome",
-    //   use: { ...devices["Desktop Chrome"], channel: "chrome" },
-    // },
-  ],
+  projects:
+    selectedBrowser === "all"
+      ? [
+          {
+            name: "chromium",
+            use: { ...devices["Desktop Chrome"] },
+          },
+          {
+            name: "firefox",
+            use: { ...devices["Desktop Firefox"] },
+          },
+          {
+            name: "webkit",
+            use: { ...devices["Desktop Safari"] },
+          },
+        ]
+      : [
+          {
+            name: selectedBrowser,
+            use:
+              selectedBrowser === "chromium"
+                ? { ...devices["Desktop Chrome"] }
+                : selectedBrowser === "firefox"
+                ? { ...devices["Desktop Firefox"] }
+                : { ...devices["Desktop Safari"] },
+          },
+        ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {

@@ -11,6 +11,16 @@ on:
         description: "Optional: Name of a specific test to run within the file"
         required: false
         default: ""
+      browser:
+        description: "Browser to run tests on"
+        required: true
+        default: chromium
+        type: choice
+        options:
+          - chromium
+          - firefox
+          - webkit
+          - all
 
 permissions:
   contents: write
@@ -41,6 +51,8 @@ jobs:
         run: rm -rf allure-results allure-report
 
       - name: Run Tests
+        env:
+          BROWSER: ${{ github.event.inputs.browser }}
         run: |
           if [ -z "${{ github.event.inputs.test_name }}" ]; then
             npx playwright test ${{ github.event.inputs.test_target }}
@@ -49,8 +61,7 @@ jobs:
           fi
 
       - name: Generate Allure Report
-        run: |
-          npx allure generate allure-results --clean -o allure-report
+        run: npx allure generate allure-results --clean -o allure-report
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
