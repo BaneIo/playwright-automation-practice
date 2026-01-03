@@ -56,4 +56,20 @@ No sensitive data (passwords, tokens, API keys) is included
 This repository is intended to demonstrate Playwright automation skills
 
 
+CI/CD and Slack Notifications
+
+This project is integrated with Slack to notify test results for **every workflow run** via GitHub Actions.
+
+- Notifications are sent **regardless of success or failure**.
+- Status icons used:
+  - ✅ SUCCESS
+  - ❌ FAILURE
+- Notifications include:
+  - Repository name
+  - Branch
+  - Workflow run link
+- Webhook URL is securely stored in **GitHub Secrets** (`SLACK_WEBHOOK_URL`)
+
+This setup ensures real-time visibility of test execution directly in Slack.
+
 ```
