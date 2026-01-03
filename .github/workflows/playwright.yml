@@ -75,3 +75,20 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
+
+      - name: Notify Slack
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            STATUS="✅ SUCCESS"
+          else
+            STATUS="❌ FAILURE"
+          fi
+
+          curl -X POST -H 'Content-type: application/json' \
+          --data "{
+            \"text\": \"*Playwright Tests Finished*\nStatus: $STATUS\nRepository: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"
+          }" \
+          $SLACK_WEBHOOK_URL
