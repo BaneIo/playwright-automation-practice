@@ -73,3 +73,12 @@ This project is integrated with Slack to notify test results for **every workflo
 This setup ensures real-time visibility of test execution directly in Slack.
 
 ```
+
+## ⚠️ Intentional Failing Test
+
+The test **Home Page** (`tests/HomePageTest.spec.js`) is intentionally designed to fail.
+This test is used to verify that:
+
+- GitHub Actions workflow is triggered correctly
+- CI pipeline reports failed tests properly
+- Slack notifications are sent on failure
